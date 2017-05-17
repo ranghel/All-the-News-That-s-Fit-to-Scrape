@@ -6,12 +6,15 @@ var request = require("request");
 var cheerio = require("cheerio");
 
 //Database Models
-var Article = require("../models/article.js");
+var Article = require("../models/Article.js");
+
+module.exports = function (app) {
+
 
 // A GET request to scrape the NYTimes website
-app.get("/scrape", function(req, res) {
+    app.get("/scrape", function(req, res) {
     // First, we grab the body of the html with request
-    request("http://www.nytimes.com", function(error, response, html) {
+        request("http://www.nytimes.com", function(error, response, html) {
         // Then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
         // Now, we grab every h2 within an article tag, and do the following:
@@ -45,7 +48,7 @@ app.get("/scrape", function(req, res) {
 });
 
 // Get the articles that were scraped from the mongoDB
-app.get("/articles", function(req, res) {
+    app.get("/articles", function(req, res) {
     // Grab every doc in the Article array
     Article.find({}, function(error, doc) {
         if (error) {
@@ -58,7 +61,7 @@ app.get("/articles", function(req, res) {
 });
 
 // Grab an article by it's objectId
-app.get("/articles/:id", function(req, res) {
+    app.get("/articles/:id", function(req, res) {
     Article.findOne({ "_id": req.params.id })
         .populate("note")
         .exec(function(error, doc) {
@@ -72,7 +75,7 @@ app.get("/articles/:id", function(req, res) {
 });
 
 // Create a new note or replace an existing one
-app.post("/articles/:id", function(req, res) {
+    app.post("/articles/:id", function(req, res) {
     var newNote = new Note(req.body);
     newNote.save(function(error, doc) {
         if (err) {
@@ -83,3 +86,4 @@ app.post("/articles/:id", function(req, res) {
         }
     });
 });
+};
