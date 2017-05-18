@@ -45,6 +45,7 @@ module.exports = function (app) {
     });
     // Tell the browser that it finished scraping the text
     res.send("Scrape complete");
+
 });
 
 // Get the articles that were scraped from the mongoDB
