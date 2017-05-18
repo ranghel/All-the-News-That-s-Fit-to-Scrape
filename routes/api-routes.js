@@ -7,7 +7,7 @@ var cheerio = require("cheerio");
 
 //Database Models
 var Article = require("../models/Article.js");
-var Note = require("../models/Note.js");
+var Note = require ("../models/Note.js");
 
 module.exports = function (app) {
 
@@ -43,9 +43,9 @@ module.exports = function (app) {
                     }
                 });
             });
+            res.redirect("/");
+
         });
-        // Tell the browser that it finished scraping the text
-        res.send("Scrape complete");
 
     });
 
