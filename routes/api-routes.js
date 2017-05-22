@@ -9,6 +9,8 @@ var cheerio = require("cheerio");
 var Article = require("../models/Article.js");
 var Note = require ("../models/Note.js");
 
+var articleCount = 0;
+
 module.exports = function (app) {
 
 
