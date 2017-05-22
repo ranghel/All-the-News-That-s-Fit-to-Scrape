@@ -35,10 +35,11 @@ app.use(express.static("public"));
 
 // Database configuration with mongoose
 var databaseUri = "mongodb://localhost/mongoosearticles";
+var uri = process.env.MONGODB_URI || process.env.MONGOHQ_URL || process.env.MONGOLAB_URI;
 
 if(process.env.MONGODB_URI)
 {
-    mongoose.connect(process.env.MONGODB_URI);
+    mongoose.connect(process.env.MONGODB_URI || mongoURI);
 }
 else
 {
