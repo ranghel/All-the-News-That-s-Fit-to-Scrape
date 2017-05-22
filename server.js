@@ -34,7 +34,17 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://heroku_hq7f8q8k:vc3n061u3eb94skprj66n4u2a5@ds149201.mlab.com:49201/heroku_hq7f8q8k");
+var databaseUri = "mongodb://localhost/mongoosearticles";
+
+if(process.env.MONGODB_URI)
+{
+    mongoose.connect(process.env.MONGODB_URI);
+}
+else
+{
+    mongoose.connect(databaseUri);
+}
+
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -55,5 +65,5 @@ require("./routes/api-routes.js")(app);
 
 // Listen on port 3000
 app.listen(PORT, function() {
-    console.log("App listening on port!" + PORT);
+    console.log("App listening on port: " + PORT);
 });
