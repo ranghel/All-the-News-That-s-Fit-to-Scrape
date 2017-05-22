@@ -34,7 +34,7 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://heroku_hq7f8q8k:vc3n061u3eb94skprj66n4u2a5@ds149201.mlab.com:49201/heroku_hq7f8q8k");
+mongoose.connect("mongodb://heroku_t75dt9vn:1qqqh9bs3qba6qcd269lkikm5c@ds149551.mlab.com:49551/heroku_t75dt9vn");
 var db = mongoose.connection;
 // Show any mongoose errors
 db.on("error", function(error) {
