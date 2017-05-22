@@ -39,7 +39,7 @@ var MONGO_URI = 'mongodb://heroku_hq7f8q8k:vc3n061u3eb94skprj66n4u2a5@ds149201.m
 
 if(process.env.MONGODB_URI)
 {
-    mongoose.connect(process.env.MONGODB_URI || mongoURI);
+    mongoose.connect(process.env.MONGODB_URI);
 }
 else
 {
