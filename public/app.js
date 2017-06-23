@@ -8,7 +8,7 @@ $.getJSON("/articles", function(data) {
 });
 
 $(document).on("click", "#scrape", function () {
-    window.location = "/articles";
+    window.location = "http://localhost:3000/scrape";
 });
 
 $(document).on("click", "p", function() {
